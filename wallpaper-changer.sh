@@ -1,6 +1,34 @@
 #!/bin/bash
+#
+# 
+# Lenin Hernandez
+# https://leninmhs.com.ve
+# @leninmhs
+#
 
-IMAGENES="/home/leninmhs/Imágenes/wallpapers"
+IMAGENES=$HOME"/Imágenes/wallpapers"
+
+if [ ! -d $IMAGENES ]; then
+	echo "No existe el directorio: '$IMAGENES' de donde se tomaran los wallpapers\n"
+	read -p "Desea crearlo? (Y)/N: " crearcarpeta
+	
+	if [ $crearcarpeta = "Y" ] || [ $crearcarpeta = "y"]; then
+		mkdir -p $IMAGENES
+		echo "Genial! Se creo el directorio '$IMAGENES' para tus wallpapers!!";
+		
+	else
+		
+		read -p "Desea crear el directorio en otra ruta? (Y)/N: " crearruta
+		if [ $crearruta = "Y" ]; then
+			read -p "Introduzca la ruta completa a utilizar para crear el directorio: " rutawallpaper
+			echo "Se creo el directorio: $rutawallpaper para tus wallpapers"
+			mkdir -p $rutawallpaper
+		fi
+		exit 1
+	fi	
+	
+
+fi	
 
 # ALEATORIO define si quiere que el wallpaper se seleccione aleatoriamente
 # Los valores validos son: true or false 
